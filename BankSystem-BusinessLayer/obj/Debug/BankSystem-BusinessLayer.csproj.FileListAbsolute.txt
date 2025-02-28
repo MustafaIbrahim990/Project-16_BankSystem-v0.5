@@ -1,0 +1,9 @@
+C:\Course 18 Projects\Project 2 Bank System\BankSystem-BusinessLayer\bin\Debug\BankSystem-BusinessLayer.dll
+C:\Course 18 Projects\Project 2 Bank System\BankSystem-BusinessLayer\bin\Debug\BankSystem-BusinessLayer.pdb
+C:\Course 18 Projects\Project 2 Bank System\BankSystem-BusinessLayer\bin\Debug\BankSystem-DataAccessLayer.dll
+C:\Course 18 Projects\Project 2 Bank System\BankSystem-BusinessLayer\bin\Debug\BankSystem-DataAccessLayer.pdb
+C:\Course 18 Projects\Project 2 Bank System\BankSystem-BusinessLayer\obj\Debug\BankSystem-BusinessLayer.csproj.AssemblyReference.cache
+C:\Course 18 Projects\Project 2 Bank System\BankSystem-BusinessLayer\obj\Debug\BankSystem-BusinessLayer.csproj.CoreCompileInputs.cache
+C:\Course 18 Projects\Project 2 Bank System\BankSystem-BusinessLayer\obj\Debug\BankSystem-BusinessLayer.csproj.CopyComplete
+C:\Course 18 Projects\Project 2 Bank System\BankSystem-BusinessLayer\obj\Debug\BankSystem-BusinessLayer.dll
+C:\Course 18 Projects\Project 2 Bank System\BankSystem-BusinessLayer\obj\Debug\BankSystem-BusinessLayer.pdb

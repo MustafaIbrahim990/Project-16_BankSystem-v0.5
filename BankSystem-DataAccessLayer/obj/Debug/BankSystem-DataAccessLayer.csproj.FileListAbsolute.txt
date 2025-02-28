@@ -1,0 +1,6 @@
+C:\Course 18 Projects\Project 2 Bank System\BankSystem-DataAccessLayer\bin\Debug\BankSystem-DataAccessLayer.dll
+C:\Course 18 Projects\Project 2 Bank System\BankSystem-DataAccessLayer\bin\Debug\BankSystem-DataAccessLayer.pdb
+C:\Course 18 Projects\Project 2 Bank System\BankSystem-DataAccessLayer\obj\Debug\BankSystem-DataAccessLayer.csproj.AssemblyReference.cache
+C:\Course 18 Projects\Project 2 Bank System\BankSystem-DataAccessLayer\obj\Debug\BankSystem-DataAccessLayer.csproj.CoreCompileInputs.cache
+C:\Course 18 Projects\Project 2 Bank System\BankSystem-DataAccessLayer\obj\Debug\BankSystem-DataAccessLayer.dll
+C:\Course 18 Projects\Project 2 Bank System\BankSystem-DataAccessLayer\obj\Debug\BankSystem-DataAccessLayer.pdb

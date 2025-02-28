@@ -1,0 +1,489 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{3B34E253-2142-4470-B4FA-DAAB01DC8CDC}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>BankSystemProject_WindowsFormApp1</RootNamespace>
+    <AssemblyName>BankSystemProject-WindowsFormApp1</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Guna.UI2">
+      <HintPath>..\..\..\Guna UI\Guna_UI_Framework_Ultimate_v2.0.0.1\Guna_UI_Framework_Ultimate_v2.0.0.1\Guna.UI-Framework-Lib-master\Guna.UI2 WinForms\.net 4.0\Guna.UI2.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.DirectoryServices" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BankSystemProject\BankSystem_CurrencyScreen\ctrlCurrenciesScreen_CurencyLists.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="BankSystemProject\BankSystem_CurrencyScreen\ctrlCurrenciesScreen_CurencyLists.Designer.cs">
+      <DependentUpon>ctrlCurrenciesScreen_CurencyLists.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BankSystemProject\BankSystem_CurrencyScreen\ctrlCurrenciesScreen_CurrencyCalculator.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="BankSystemProject\BankSystem_CurrencyScreen\ctrlCurrenciesScreen_CurrencyCalculator.Designer.cs">
+      <DependentUpon>ctrlCurrenciesScreen_CurrencyCalculator.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BankSystemProject\BankSystem_CurrencyScreen\ctrlCurrenciesScreen_CurrencyOptions.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="BankSystemProject\BankSystem_CurrencyScreen\ctrlCurrenciesScreen_CurrencyOptions.Designer.cs">
+      <DependentUpon>ctrlCurrenciesScreen_CurrencyOptions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BankSystemProject\BankSystem_CurrencyScreen\ctrlCurrenciesScreen_FindCurency.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="BankSystemProject\BankSystem_CurrencyScreen\ctrlCurrenciesScreen_FindCurency.Designer.cs">
+      <DependentUpon>ctrlCurrenciesScreen_FindCurency.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BankSystemProject\BankSystem_CurrencyScreen\ctrlCurrenciesScreen_UpdateCurencyRate.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="BankSystemProject\BankSystem_CurrencyScreen\ctrlCurrenciesScreen_UpdateCurencyRate.Designer.cs">
+      <DependentUpon>ctrlCurrenciesScreen_UpdateCurencyRate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BankSystemProject\BankSystem_LoginScreen\ctrlLoginScreen_LeftPanelSide.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="BankSystemProject\BankSystem_LoginScreen\ctrlLoginScreen_LeftPanelSide.Designer.cs">
+      <DependentUpon>ctrlLoginScreen_LeftPanelSide.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BankSystemProject\BankSystem_LoginScreen\ctrlLoginScreen_RightPanelSide.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="BankSystemProject\BankSystem_LoginScreen\ctrlLoginScreen_RightPanelSide.Designer.cs">
+      <DependentUpon>ctrlLoginScreen_RightPanelSide.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BankSystemProject\BankSystem_LoginScreen\ctrlLoginScreen_TopPanelSide.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="BankSystemProject\BankSystem_LoginScreen\ctrlLoginScreen_TopPanelSide.Designer.cs">
+      <DependentUpon>ctrlLoginScreen_TopPanelSide.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BankSystemProject\BankSystem_MainScreen\ctrlMainScreen_RightPanelSide.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="BankSystemProject\BankSystem_MainScreen\ctrlMainScreen_RightPanelSide.Designer.cs">
+      <DependentUpon>ctrlMainScreen_RightPanelSide.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BankSystemProject\BankSystem_ManageClientsScreen\ctrlManageClientsScreen_AddNewClient.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="BankSystemProject\BankSystem_ManageClientsScreen\ctrlManageClientsScreen_AddNewClient.Designer.cs">
+      <DependentUpon>ctrlManageClientsScreen_AddNewClient.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BankSystemProject\BankSystem_ManageClientsScreen\ctrlManageClientsScreen_ClientLists.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="BankSystemProject\BankSystem_ManageClientsScreen\ctrlManageClientsScreen_ClientLists.Designer.cs">
+      <DependentUpon>ctrlManageClientsScreen_ClientLists.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BankSystemProject\BankSystem_ManageClientsScreen\ctrlManageClientsScreen_DeleteClient.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="BankSystemProject\BankSystem_ManageClientsScreen\ctrlManageClientsScreen_DeleteClient.Designer.cs">
+      <DependentUpon>ctrlManageClientsScreen_DeleteClient.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BankSystemProject\BankSystem_ManageClientsScreen\ctrlManageClientsScreen_FindClient.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="BankSystemProject\BankSystem_ManageClientsScreen\ctrlManageClientsScreen_FindClient.Designer.cs">
+      <DependentUpon>ctrlManageClientsScreen_FindClient.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BankSystemProject\BankSystem_ManageClientsScreen\ctrlManageClientsScreen_ManageClientsScreenOptions.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="BankSystemProject\BankSystem_ManageClientsScreen\ctrlManageClientsScreen_ManageClientsScreenOptions.Designer.cs">
+      <DependentUpon>ctrlManageClientsScreen_ManageClientsScreenOptions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BankSystemProject\BankSystem_LoginScreen\frmLoginScreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BankSystemProject\BankSystem_LoginScreen\frmLoginScreen.Designer.cs">
+      <DependentUpon>frmLoginScreen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BankSystemProject\BankSystem_MainScreen\frmMainScreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BankSystemProject\BankSystem_MainScreen\frmMainScreen.Designer.cs">
+      <DependentUpon>frmMainScreen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BankSystemProject\BankSystem_ManageClientsScreen\ctrlManageClientsScreen_UpdateClient.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="BankSystemProject\BankSystem_ManageClientsScreen\ctrlManageClientsScreen_UpdateClient.Designer.cs">
+      <DependentUpon>ctrlManageClientsScreen_UpdateClient.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BankSystemProject\BankSystem_ManageClientsScreen\frmManageClientsScreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BankSystemProject\BankSystem_ManageClientsScreen\frmManageClientsScreen.Designer.cs">
+      <DependentUpon>frmManageClientsScreen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BankSystemProject\BankSystem_ManageUsersScreen\ctrlManageUsersScreen_DeleteUser.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="BankSystemProject\BankSystem_ManageUsersScreen\ctrlManageUsersScreen_DeleteUser.Designer.cs">
+      <DependentUpon>ctrlManageUsersScreen_DeleteUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BankSystemProject\BankSystem_ManageUsersScreen\ctrlManageUsersScreen_FindUser.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="BankSystemProject\BankSystem_ManageUsersScreen\ctrlManageUsersScreen_FindUser.Designer.cs">
+      <DependentUpon>ctrlManageUsersScreen_FindUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BankSystemProject\BankSystem_ManageUsersScreen\ctrlManageUsersScreen_ManageUsersScreenOptions.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="BankSystemProject\BankSystem_ManageUsersScreen\ctrlManageUsersScreen_ManageUsersScreenOptions.Designer.cs">
+      <DependentUpon>ctrlManageUsersScreen_ManageUsersScreenOptions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BankSystemProject\BankSystem_ManageUsersScreen\ctrlManageUsersScreen_UpdateUser.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="BankSystemProject\BankSystem_ManageUsersScreen\ctrlManageUsersScreen_UpdateUser.Designer.cs">
+      <DependentUpon>ctrlManageUsersScreen_UpdateUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BankSystemProject\BankSystem_ManageUsersScreen\ctrlManageUsersScreen_UserLists.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="BankSystemProject\BankSystem_ManageUsersScreen\ctrlManageUsersScreen_UserLists.Designer.cs">
+      <DependentUpon>ctrlManageUsersScreen_UserLists.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BankSystemProject\BankSystem_ManageUsersScreen\ctrlManageUsersScreen_AddNewUser.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="BankSystemProject\BankSystem_ManageUsersScreen\ctrlManageUsersScreen_AddNewUser.Designer.cs">
+      <DependentUpon>ctrlManageUsersScreen_AddNewUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BankSystemProject\BankSystem_ManageUsersScreen\frmManageUsersScreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BankSystemProject\BankSystem_ManageUsersScreen\frmManageUsersScreen.Designer.cs">
+      <DependentUpon>frmManageUsersScreen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BankSystemProject\BankSystem_TransactionsScreen\ctrlTransactionsScreen_Deposit.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="BankSystemProject\BankSystem_TransactionsScreen\ctrlTransactionsScreen_Deposit.Designer.cs">
+      <DependentUpon>ctrlTransactionsScreen_Deposit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BankSystemProject\BankSystem_TransactionsScreen\ctrlTransactionsScreen_TotalBalance.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="BankSystemProject\BankSystem_TransactionsScreen\ctrlTransactionsScreen_TotalBalance.Designer.cs">
+      <DependentUpon>ctrlTransactionsScreen_TotalBalance.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BankSystemProject\BankSystem_TransactionsScreen\ctrlTransactionsScreen_TransactionsOptions.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="BankSystemProject\BankSystem_TransactionsScreen\ctrlTransactionsScreen_TransactionsOptions.Designer.cs">
+      <DependentUpon>ctrlTransactionsScreen_TransactionsOptions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BankSystemProject\BankSystem_TransactionsScreen\ctrlTransactionsScreen_Transfer.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="BankSystemProject\BankSystem_TransactionsScreen\ctrlTransactionsScreen_Transfer.Designer.cs">
+      <DependentUpon>ctrlTransactionsScreen_Transfer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BankSystemProject\BankSystem_TransactionsScreen\ctrlTransactionsScreen_TransferRegisters.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="BankSystemProject\BankSystem_TransactionsScreen\ctrlTransactionsScreen_TransferRegisters.Designer.cs">
+      <DependentUpon>ctrlTransactionsScreen_TransferRegisters.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BankSystemProject\BankSystem_TransactionsScreen\ctrlTransactionsScreen_Withdraw.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="BankSystemProject\BankSystem_TransactionsScreen\ctrlTransactionsScreen_Withdraw.Designer.cs">
+      <DependentUpon>ctrlTransactionsScreen_Withdraw.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BankSystemProject\BankSystem_TransactionsScreen\frmTransactionsScreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BankSystemProject\BankSystem_TransactionsScreen\frmTransactionsScreen.Designer.cs">
+      <DependentUpon>frmTransactionsScreen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BankSystemProject\BankSystem_CurrencyScreen\frmCurrenciesScreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BankSystemProject\BankSystem_CurrencyScreen\frmCurrenciesScreen.Designer.cs">
+      <DependentUpon>frmCurrenciesScreen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="BankSystemProject\BankSystem_CurrencyScreen\ctrlCurrenciesScreen_CurencyLists.resx">
+      <DependentUpon>ctrlCurrenciesScreen_CurencyLists.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BankSystemProject\BankSystem_CurrencyScreen\ctrlCurrenciesScreen_CurrencyCalculator.resx">
+      <DependentUpon>ctrlCurrenciesScreen_CurrencyCalculator.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BankSystemProject\BankSystem_CurrencyScreen\ctrlCurrenciesScreen_CurrencyOptions.resx">
+      <DependentUpon>ctrlCurrenciesScreen_CurrencyOptions.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BankSystemProject\BankSystem_CurrencyScreen\ctrlCurrenciesScreen_FindCurency.resx">
+      <DependentUpon>ctrlCurrenciesScreen_FindCurency.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BankSystemProject\BankSystem_CurrencyScreen\ctrlCurrenciesScreen_UpdateCurencyRate.resx">
+      <DependentUpon>ctrlCurrenciesScreen_UpdateCurencyRate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BankSystemProject\BankSystem_LoginScreen\ctrlLoginScreen_LeftPanelSide.resx">
+      <DependentUpon>ctrlLoginScreen_LeftPanelSide.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BankSystemProject\BankSystem_LoginScreen\ctrlLoginScreen_RightPanelSide.resx">
+      <DependentUpon>ctrlLoginScreen_RightPanelSide.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BankSystemProject\BankSystem_LoginScreen\ctrlLoginScreen_TopPanelSide.resx">
+      <DependentUpon>ctrlLoginScreen_TopPanelSide.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BankSystemProject\BankSystem_MainScreen\ctrlMainScreen_RightPanelSide.resx">
+      <DependentUpon>ctrlMainScreen_RightPanelSide.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BankSystemProject\BankSystem_ManageClientsScreen\ctrlManageClientsScreen_AddNewClient.resx">
+      <DependentUpon>ctrlManageClientsScreen_AddNewClient.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BankSystemProject\BankSystem_ManageClientsScreen\ctrlManageClientsScreen_ClientLists.resx">
+      <DependentUpon>ctrlManageClientsScreen_ClientLists.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BankSystemProject\BankSystem_ManageClientsScreen\ctrlManageClientsScreen_DeleteClient.resx">
+      <DependentUpon>ctrlManageClientsScreen_DeleteClient.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BankSystemProject\BankSystem_ManageClientsScreen\ctrlManageClientsScreen_FindClient.resx">
+      <DependentUpon>ctrlManageClientsScreen_FindClient.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BankSystemProject\BankSystem_ManageClientsScreen\ctrlManageClientsScreen_ManageClientsScreenOptions.resx">
+      <DependentUpon>ctrlManageClientsScreen_ManageClientsScreenOptions.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BankSystemProject\BankSystem_LoginScreen\frmLoginScreen.resx">
+      <DependentUpon>frmLoginScreen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BankSystemProject\BankSystem_MainScreen\frmMainScreen.resx">
+      <DependentUpon>frmMainScreen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BankSystemProject\BankSystem_ManageClientsScreen\ctrlManageClientsScreen_UpdateClient.resx">
+      <DependentUpon>ctrlManageClientsScreen_UpdateClient.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BankSystemProject\BankSystem_ManageClientsScreen\frmManageClientsScreen.resx">
+      <DependentUpon>frmManageClientsScreen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BankSystemProject\BankSystem_ManageUsersScreen\ctrlManageUsersScreen_DeleteUser.resx">
+      <DependentUpon>ctrlManageUsersScreen_DeleteUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BankSystemProject\BankSystem_ManageUsersScreen\ctrlManageUsersScreen_FindUser.resx">
+      <DependentUpon>ctrlManageUsersScreen_FindUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BankSystemProject\BankSystem_ManageUsersScreen\ctrlManageUsersScreen_ManageUsersScreenOptions.resx">
+      <DependentUpon>ctrlManageUsersScreen_ManageUsersScreenOptions.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BankSystemProject\BankSystem_ManageUsersScreen\ctrlManageUsersScreen_UpdateUser.resx">
+      <DependentUpon>ctrlManageUsersScreen_UpdateUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BankSystemProject\BankSystem_ManageUsersScreen\ctrlManageUsersScreen_UserLists.resx">
+      <DependentUpon>ctrlManageUsersScreen_UserLists.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BankSystemProject\BankSystem_ManageUsersScreen\ctrlManageUsersScreen_AddNewUser.resx">
+      <DependentUpon>ctrlManageUsersScreen_AddNewUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BankSystemProject\BankSystem_ManageUsersScreen\frmManageUsersScreen.resx">
+      <DependentUpon>frmManageUsersScreen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BankSystemProject\BankSystem_TransactionsScreen\ctrlTransactionsScreen_Deposit.resx">
+      <DependentUpon>ctrlTransactionsScreen_Deposit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BankSystemProject\BankSystem_TransactionsScreen\ctrlTransactionsScreen_TotalBalance.resx">
+      <DependentUpon>ctrlTransactionsScreen_TotalBalance.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BankSystemProject\BankSystem_TransactionsScreen\ctrlTransactionsScreen_TransactionsOptions.resx">
+      <DependentUpon>ctrlTransactionsScreen_TransactionsOptions.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BankSystemProject\BankSystem_TransactionsScreen\ctrlTransactionsScreen_Transfer.resx">
+      <DependentUpon>ctrlTransactionsScreen_Transfer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BankSystemProject\BankSystem_TransactionsScreen\ctrlTransactionsScreen_TransferRegisters.resx">
+      <DependentUpon>ctrlTransactionsScreen_TransferRegisters.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BankSystemProject\BankSystem_TransactionsScreen\ctrlTransactionsScreen_Withdraw.resx">
+      <DependentUpon>ctrlTransactionsScreen_Withdraw.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BankSystemProject\BankSystem_TransactionsScreen\frmTransactionsScreen.resx">
+      <DependentUpon>frmTransactionsScreen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BankSystemProject\BankSystem_CurrencyScreen\frmCurrenciesScreen.resx">
+      <DependentUpon>frmCurrenciesScreen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MoneyExchsnge_Black.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\BankIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Close_AppRed.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\HidePassWord.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ShowPassWord.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BankSystem-BusinessLayer\BankSystem-BusinessLayer.csproj">
+      <Project>{6fd2ec2a-5dcd-4831-811c-22378f746b98}</Project>
+      <Name>BankSystem-BusinessLayer</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\home-page.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Manage Clients.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Manage Users.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Transactions.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Currencies.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ListBlack.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\AddNewBlack.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\UpdateBlack.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\DeleteBlack.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FindClient_Black.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FindClient_Black1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FindClient_Black2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ListBlue.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\AddNewBlue.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FindClient_Blue.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\UpdateBlue.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\DeleteBlue.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\AddNewBlue1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\DeleteUser_RedX.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\DepositBlack.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\DepositBlue.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\WithdrawBlack.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\WithdrawBlue.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\TotalMoneyBlack.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\TotalMoneyBlue.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\TransferBlack.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\TransferBlue.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\RegisterBlack.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\RegisterBlue.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MoneyExchsnge_Blue.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

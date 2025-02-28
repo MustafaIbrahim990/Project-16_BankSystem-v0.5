@@ -1,0 +1,47 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace BankSystemProject_WindowsFormApp1
+{
+    public partial class frmManageClientsScreen : Form
+    {
+        //Private Methods :-
+        private void _PrintUserNameANDDate()
+        {
+            ctrlLoginScreen_TopPanelSide1.UserName = _UserName;
+            ctrlLoginScreen_TopPanelSide1.Date = DateTime.UtcNow.ToLongDateString();
+        }
+
+
+        //Properties :-
+        private string _UserName { get; set; }
+        private string _PassWord { get; set; }
+
+
+        //Constructor :-
+        public frmManageClientsScreen(string UserName, string PassWord)
+        {
+            InitializeComponent();
+
+            _UserName = UserName;
+            _PassWord = PassWord;
+        }
+
+        private void frmManageClientsScreen_Load(object sender, EventArgs e)
+        {
+            _PrintUserNameANDDate();
+        }
+
+        private void ctrlManageClientsScreen_ManageClientsScreenOptions1_Load(object sender, EventArgs e)
+        {
+
+        }
+    }
+}
