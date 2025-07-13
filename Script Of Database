@@ -1,0 +1,504 @@
+USE [master] GO
+/****** Object: Database [BankSystemDB] Script Date: 7/13/2025 2:23:37 AM ******/
+CREATE DATABASE [BankSystemDB] CONTAINMENT = NONE ON PRIMARY
+( NAME = N'BankSystemDB', FILENAME = N'C:\Program Files\Microsoft SQL Server\MSSQL16.MSSQLSERVER\MSSQL\DATA\BankSystemDB.mdf' , SIZE = 8192KB , MAXSIZE = UNLIMITED, FILEGROWTH = 65536KB ) LOG ON
+( NAME = N'BankSystemDB_log', FILENAME = N'C:\Program Files\Microsoft SQL Server\MSSQL16.MSSQLSERVER\MSSQL\DATA\BankSystemDB_log.ldf' , SIZE = 8192KB , MAXSIZE = 2048GB , FILEGROWTH = 65536KB ) WITH CATALOG_COLLATION = DATABASE_DEFAULT, LEDGER = OFF GO
+ALTER DATABASE [BankSystemDB] SET COMPATIBILITY_LEVEL = 160 GO IF (1 = FULLTEXTSERVICEPROPERTY('IsFullTextInstalled')) begin EXEC [BankSystemDB].[dbo].[sp_fulltext_database] @action = 'enable' end GO
+ALTER DATABASE [BankSystemDB] SET ANSI_NULL_DEFAULT OFF GO
+ALTER DATABASE [BankSystemDB] SET ANSI_NULLS OFF GO
+ALTER DATABASE [BankSystemDB] SET ANSI_PADDING OFF GO
+ALTER DATABASE [BankSystemDB] SET ANSI_WARNINGS OFF GO
+ALTER DATABASE [BankSystemDB] SET ARITHABORT OFF GO
+ALTER DATABASE [BankSystemDB] SET AUTO_CLOSE OFF GO
+ALTER DATABASE [BankSystemDB] SET AUTO_SHRINK OFF GO
+ALTER DATABASE [BankSystemDB] SET AUTO_UPDATE_STATISTICS ONGO
+ALTER DATABASE [BankSystemDB] SET CURSOR_CLOSE_ON_COMMIT
+OFF
+GO
+ALTER DATABASE [BankSystemDB] SET CURSOR_DEFAULT GLOBAL
+GO
+ALTER DATABASE [BankSystemDB] SET CONCAT_NULL_YIELDS_NULL OFF
+GO
+ALTER DATABASE [BankSystemDB] SET NUMERIC_ROUNDABORT OFF
+GO
+ALTER DATABASE [BankSystemDB] SET QUOTED_IDENTIFIER OFF
+GO
+ALTER DATABASE [BankSystemDB] SET RECURSIVE_TRIGGERS OFF
+GO
+ALTER DATABASE [BankSystemDB] SET DISABLE_BROKER
+GO
+ALTER DATABASE [BankSystemDB] SET
+AUTO_UPDATE_STATISTICS_ASYNC OFF
+GO
+ALTER DATABASE [BankSystemDB] SET
+DATE_CORRELATION_OPTIMIZATION OFF
+GO
+ALTER DATABASE [BankSystemDB] SET TRUSTWORTHY OFF
+GO
+ALTER DATABASE [BankSystemDB] SET ALLOW_SNAPSHOT_ISOLATION
+OFF
+GO
+ALTER DATABASE [BankSystemDB] SET PARAMETERIZATION SIMPLE
+GO
+ALTER DATABASE [BankSystemDB] SET READ_COMMITTED_SNAPSHOT
+OFF
+GO
+ALTER DATABASE [BankSystemDB] SET HONOR_BROKER_PRIORITY OFF
+GO
+ALTER DATABASE [BankSystemDB] SET RECOVERY FULL
+GO
+ALTER DATABASE [BankSystemDB] SET MULTI_USER
+GOALTER DATABASE [BankSystemDB] SET PAGE_VERIFY CHECKSUM
+GO
+ALTER DATABASE [BankSystemDB] SET DB_CHAINING OFF
+GO
+ALTER DATABASE [BankSystemDB] SET FILESTREAM(
+NON_TRANSACTED_ACCESS = OFF )
+GO
+ALTER DATABASE [BankSystemDB] SET TARGET_RECOVERY_TIME = 60
+SECONDS
+GO
+ALTER DATABASE [BankSystemDB] SET DELAYED_DURABILITY =
+DISABLED
+GO
+ALTER DATABASE [BankSystemDB] SET
+ACCELERATED_DATABASE_RECOVERY = OFF
+GO
+EXEC sys.sp_db_vardecimal_storage_format N'BankSystemDB', N'ON'
+GO
+ALTER DATABASE [BankSystemDB] SET QUERY_STORE = ON
+GO
+ALTER DATABASE [BankSystemDB] SET QUERY_STORE
+(OPERATION_MODE = READ_WRITE, CLEANUP_POLICY =
+(STALE_QUERY_THRESHOLD_DAYS = 30),
+DATA_FLUSH_INTERVAL_SECONDS = 900, INTERVAL_LENGTH_MINUTES =
+60, MAX_STORAGE_SIZE_MB = 1000, QUERY_CAPTURE_MODE = AUTO,
+SIZE_BASED_CLEANUP_MODE = AUTO, MAX_PLANS_PER_QUERY = 200,
+WAIT_STATS_CAPTURE_MODE = ON)
+GO
+USE [BankSystemDB]
+GO
+/****** Object: Table [dbo].[Clients] Script Date: 7/13/2025 2:23:37 AM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Clients](
+[ID] [int] IDENTITY(1,1) NOT NULL,
+[AccountNumber] [nvarchar](50) NOT NULL,[PINCode] [nvarchar](50) NOT NULL,
+[AccountBalance] [decimal](18, 2) NOT NULL,
+[PersonID] [int] NOT NULL,
+CONSTRAINT [PK_Clients] PRIMARY KEY CLUSTERED
+(
+[ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF,
+IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON,
+ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON
+[PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object: Table [dbo].[ClientTransferRegisters] Script Date: 7/13/2025
+2:23:37 AM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[ClientTransferRegisters](
+[ID] [int] IDENTITY(1,1) NOT NULL,
+[DateTime] [datetime] NOT NULL,
+[sClientID] [int] NOT NULL,
+[dClientID] [int] NOT NULL,
+[Amount] [decimal](18, 2) NOT NULL,
+[sBalance] [decimal](18, 2) NOT NULL,
+[dBalance] [decimal](18, 2) NOT NULL,
+[ByUserID] [int] NOT NULL,
+CONSTRAINT [PK_ClientTransferRegisters] PRIMARY KEY CLUSTERED
+(
+[ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF,
+IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON,
+ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON
+[PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object: Table [dbo].[Countries] Script Date: 7/13/2025 2:23:37 AM ******/
+SET ANSI_NULLS ONGO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Countries](
+[ID] [int] IDENTITY(1,1) NOT NULL,
+[Name] [nvarchar](100) NOT NULL,
+[CurrencyID] [int] NOT NULL,
+CONSTRAINT [PK_Countries] PRIMARY KEY CLUSTERED
+(
+[ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF,
+IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON,
+ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON
+[PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object: Table [dbo].[Currencies] Script Date: 7/13/2025 2:23:37 AM
+******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Currencies](
+[ID] [int] IDENTITY(1,1) NOT NULL,
+[Name] [nvarchar](100) NOT NULL,
+[Code] [nvarchar](3) NOT NULL,
+[Rate] [float] NOT NULL,
+CONSTRAINT [PK_Currencies] PRIMARY KEY CLUSTERED
+(
+[ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF,
+IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON,
+ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON
+[PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object: Table [dbo].[Persons] Script Date: 7/13/2025 2:23:37 AM ******/
+SET ANSI_NULLS ONGO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Persons](
+[ID] [int] IDENTITY(1,1) NOT NULL,
+[FirstName] [nvarchar](50) NOT NULL,
+[LastName] [nvarchar](50) NOT NULL,
+[Phone] [nvarchar](11) NOT NULL,
+[Email] [nvarchar](50) NOT NULL,
+CONSTRAINT [PK_Persons] PRIMARY KEY CLUSTERED
+(
+[ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF,
+IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON,
+ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON
+[PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object: Table [dbo].[UserLoginRegisters] Script Date: 7/13/2025 2:23:37
+AM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[UserLoginRegisters](
+[ID] [int] IDENTITY(1,1) NOT NULL,
+[DateTime] [datetime] NOT NULL,
+[UserID] [int] NOT NULL,
+CONSTRAINT [PK_UserLoginRegisters] PRIMARY KEY CLUSTERED
+(
+[ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF,
+IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON,
+ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON
+[PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object: Table [dbo].[Users] Script Date: 7/13/2025 2:23:37 AM ******/SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Users](
+[ID] [int] IDENTITY(1,1) NOT NULL,
+[UserName] [nvarchar](50) NOT NULL,
+[PassWord] [nvarchar](50) NOT NULL,
+[Permissions] [int] NOT NULL,
+[PersonID] [int] NOT NULL,
+CONSTRAINT [PK_Users] PRIMARY KEY CLUSTERED
+(
+[ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF,
+IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON,
+ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON
+[PRIMARY]
+) ON [PRIMARY]
+GO
+SET IDENTITY_INSERT [dbo].[Clients] ON
+GO
+INSERT [dbo].[Clients] ([ID], [AccountNumber], [PINCode], [AccountBalance],
+[PersonID]) VALUES (1, N'A150', N'1234', CAST(6000.00 AS Decimal(18, 2)), 1)
+GO
+INSERT [dbo].[Clients] ([ID], [AccountNumber], [PINCode], [AccountBalance],
+[PersonID]) VALUES (2, N'A151', N'1234', CAST(3000.00 AS Decimal(18, 2)), 2)
+GO
+INSERT [dbo].[Clients] ([ID], [AccountNumber], [PINCode], [AccountBalance],
+[PersonID]) VALUES (5, N'A155', N'1234', CAST(7000.00 AS Decimal(18, 2)),
+14)
+GO
+SET IDENTITY_INSERT [dbo].[Clients] OFF
+GO
+SET IDENTITY_INSERT [dbo].[ClientTransferRegisters] ON
+GO
+INSERT [dbo].[ClientTransferRegisters] ([ID], [DateTime], [sClientID], [dClientID],
+[Amount], [sBalance], [dBalance], [ByUserID]) VALUES (1, CAST(N'2024-08-
+31T19:02:51.400' AS DateTime), 1, 2, CAST(1000.00 AS Decimal(18, 2)),CAST(5000.00 AS Decimal(18, 2)), CAST(2000.00 AS Decimal(18, 2)), 1)
+GO
+INSERT [dbo].[ClientTransferRegisters] ([ID], [DateTime], [sClientID], [dClientID],
+[Amount], [sBalance], [dBalance], [ByUserID]) VALUES (3, CAST(N'2024-08-
+31T19:02:51.400' AS DateTime), 1, 5, CAST(3000.00 AS Decimal(18, 2)),
+CAST(2000.00 AS Decimal(18, 2)), CAST(6000.00 AS Decimal(18, 2)), 1)
+GO
+INSERT [dbo].[ClientTransferRegisters] ([ID], [DateTime], [sClientID], [dClientID],
+[Amount], [sBalance], [dBalance], [ByUserID]) VALUES (4, CAST(N'2024-09-
+02T14:55:48.387' AS DateTime), 2, 5, CAST(3500.00 AS Decimal(18, 2)),
+CAST(1000.00 AS Decimal(18, 2)), CAST(2000.00 AS Decimal(18, 2)), 1)
+GO
+INSERT [dbo].[ClientTransferRegisters] ([ID], [DateTime], [sClientID], [dClientID],
+[Amount], [sBalance], [dBalance], [ByUserID]) VALUES (5, CAST(N'2024-09-
+02T16:59:54.300' AS DateTime), 1, 5, CAST(1000.00 AS Decimal(18, 2)),
+CAST(7000.00 AS Decimal(18, 2)), CAST(5000.00 AS Decimal(18, 2)), 1)
+GO
+INSERT [dbo].[ClientTransferRegisters] ([ID], [DateTime], [sClientID], [dClientID],
+[Amount], [sBalance], [dBalance], [ByUserID]) VALUES (6, CAST(N'2024-09-
+02T17:12:19.190' AS DateTime), 2, 5, CAST(500.00 AS Decimal(18, 2)),
+CAST(4500.00 AS Decimal(18, 2)), CAST(5500.00 AS Decimal(18, 2)), 1)
+GO
+INSERT [dbo].[ClientTransferRegisters] ([ID], [DateTime], [sClientID], [dClientID],
+[Amount], [sBalance], [dBalance], [ByUserID]) VALUES (7, CAST(N'2024-09-
+02T21:10:29.997' AS DateTime), 5, 2, CAST(500.00 AS Decimal(18, 2)),
+CAST(5000.00 AS Decimal(18, 2)), CAST(5000.00 AS Decimal(18, 2)), 1)
+GO
+INSERT [dbo].[ClientTransferRegisters] ([ID], [DateTime], [sClientID], [dClientID],
+[Amount], [sBalance], [dBalance], [ByUserID]) VALUES (8, CAST(N'2024-09-
+02T21:12:54.570' AS DateTime), 5, 1, CAST(1000.00 AS Decimal(18, 2)),
+CAST(4000.00 AS Decimal(18, 2)), CAST(8000.00 AS Decimal(18, 2)), 1)
+GO
+INSERT [dbo].[ClientTransferRegisters] ([ID], [DateTime], [sClientID], [dClientID],
+[Amount], [sBalance], [dBalance], [ByUserID]) VALUES (9, CAST(N'2024-09-
+02T21:13:32.120' AS DateTime), 2, 5, CAST(2000.00 AS Decimal(18, 2)),
+CAST(3000.00 AS Decimal(18, 2)), CAST(6000.00 AS Decimal(18, 2)), 1)
+GO
+INSERT [dbo].[ClientTransferRegisters] ([ID], [DateTime], [sClientID], [dClientID],[Amount], [sBalance], [dBalance], [ByUserID]) VALUES (10, CAST(N'2024-09-
+02T21:13:32.120' AS DateTime), 2, 5, CAST(2000.00 AS Decimal(18, 2)),
+CAST(3000.00 AS Decimal(18, 2)), CAST(6000.00 AS Decimal(18, 2)), 1)
+GO
+INSERT [dbo].[ClientTransferRegisters] ([ID], [DateTime], [sClientID], [dClientID],
+[Amount], [sBalance], [dBalance], [ByUserID]) VALUES (11, CAST(N'2024-09-
+02T21:14:53.217' AS DateTime), 5, 2, CAST(3000.00 AS Decimal(18, 2)),
+CAST(3000.00 AS Decimal(18, 2)), CAST(6000.00 AS Decimal(18, 2)), 1)
+GO
+INSERT [dbo].[ClientTransferRegisters] ([ID], [DateTime], [sClientID], [dClientID],
+[Amount], [sBalance], [dBalance], [ByUserID]) VALUES (12, CAST(N'2024-09-
+02T21:16:07.543' AS DateTime), 2, 5, CAST(1000.00 AS Decimal(18, 2)),
+CAST(5000.00 AS Decimal(18, 2)), CAST(4000.00 AS Decimal(18, 2)), 1)
+GO
+INSERT [dbo].[ClientTransferRegisters] ([ID], [DateTime], [sClientID], [dClientID],
+[Amount], [sBalance], [dBalance], [ByUserID]) VALUES (13, CAST(N'2024-09-
+02T21:16:54.013' AS DateTime), 2, 5, CAST(1000.00 AS Decimal(18, 2)),
+CAST(4000.00 AS Decimal(18, 2)), CAST(5000.00 AS Decimal(18, 2)), 1)
+GO
+INSERT [dbo].[ClientTransferRegisters] ([ID], [DateTime], [sClientID], [dClientID],
+[Amount], [sBalance], [dBalance], [ByUserID]) VALUES (14, CAST(N'2024-09-
+02T21:16:54.013' AS DateTime), 2, 5, CAST(1000.00 AS Decimal(18, 2)),
+CAST(4000.00 AS Decimal(18, 2)), CAST(5000.00 AS Decimal(18, 2)), 1)
+GO
+INSERT [dbo].[ClientTransferRegisters] ([ID], [DateTime], [sClientID], [dClientID],
+[Amount], [sBalance], [dBalance], [ByUserID]) VALUES (15, CAST(N'2024-09-
+02T23:55:12.363' AS DateTime), 2, 5, CAST(1000.00 AS Decimal(18, 2)),
+CAST(3000.00 AS Decimal(18, 2)), CAST(6000.00 AS Decimal(18, 2)), 1)
+GO
+INSERT [dbo].[ClientTransferRegisters] ([ID], [DateTime], [sClientID], [dClientID],
+[Amount], [sBalance], [dBalance], [ByUserID]) VALUES (16, CAST(N'2024-09-
+02T23:55:55.733' AS DateTime), 2, 5, CAST(1000.00 AS Decimal(18, 2)),
+CAST(2000.00 AS Decimal(18, 2)), CAST(7000.00 AS Decimal(18, 2)), 1)
+GO
+INSERT [dbo].[ClientTransferRegisters] ([ID], [DateTime], [sClientID], [dClientID],
+[Amount], [sBalance], [dBalance], [ByUserID]) VALUES (17, CAST(N'2024-09-
+14T13:19:01.247' AS DateTime), 1, 2, CAST(1000.00 AS Decimal(18, 2)),
+CAST(7000.00 AS Decimal(18, 2)), CAST(3000.00 AS Decimal(18, 2)), 1)GO
+INSERT [dbo].[ClientTransferRegisters] ([ID], [DateTime], [sClientID], [dClientID],
+[Amount], [sBalance], [dBalance], [ByUserID]) VALUES (18, CAST(N'2024-09-
+14T13:22:32.493' AS DateTime), 1, 2, CAST(1000.00 AS Decimal(18, 2)),
+CAST(6000.00 AS Decimal(18, 2)), CAST(4000.00 AS Decimal(18, 2)), 1)
+GO
+INSERT [dbo].[ClientTransferRegisters] ([ID], [DateTime], [sClientID], [dClientID],
+[Amount], [sBalance], [dBalance], [ByUserID]) VALUES (19, CAST(N'2024-09-
+14T21:08:47.543' AS DateTime), 1, 2, CAST(1000.00 AS Decimal(18, 2)),
+CAST(5000.00 AS Decimal(18, 2)), CAST(4000.00 AS Decimal(18, 2)), 1)
+GO
+INSERT [dbo].[ClientTransferRegisters] ([ID], [DateTime], [sClientID], [dClientID],
+[Amount], [sBalance], [dBalance], [ByUserID]) VALUES (20, CAST(N'2024-09-
+14T21:09:14.470' AS DateTime), 2, 1, CAST(1000.00 AS Decimal(18, 2)),
+CAST(3000.00 AS Decimal(18, 2)), CAST(6000.00 AS Decimal(18, 2)), 1)
+GO
+INSERT [dbo].[ClientTransferRegisters] ([ID], [DateTime], [sClientID], [dClientID],
+[Amount], [sBalance], [dBalance], [ByUserID]) VALUES (21, CAST(N'2024-09-
+14T21:13:13.327' AS DateTime), 1, 2, CAST(7000.00 AS Decimal(18, 2)),
+CAST(-1000.00 AS Decimal(18, 2)), CAST(10000.00 AS Decimal(18, 2)), 1)
+GO
+INSERT [dbo].[ClientTransferRegisters] ([ID], [DateTime], [sClientID], [dClientID],
+[Amount], [sBalance], [dBalance], [ByUserID]) VALUES (22, CAST(N'2024-09-
+14T21:13:35.140' AS DateTime), 2, 1, CAST(60000.00 AS Decimal(18, 2)),
+CAST(-50000.00 AS Decimal(18, 2)), CAST(59000.00 AS Decimal(18, 2)), 1)
+GO
+INSERT [dbo].[ClientTransferRegisters] ([ID], [DateTime], [sClientID], [dClientID],
+[Amount], [sBalance], [dBalance], [ByUserID]) VALUES (23, CAST(N'2024-09-
+14T21:13:58.403' AS DateTime), 1, 2, CAST(50000.00 AS Decimal(18, 2)),
+CAST(9000.00 AS Decimal(18, 2)), CAST(0.00 AS Decimal(18, 2)), 1)
+GO
+INSERT [dbo].[ClientTransferRegisters] ([ID], [DateTime], [sClientID], [dClientID],
+[Amount], [sBalance], [dBalance], [ByUserID]) VALUES (24, CAST(N'2024-09-
+14T21:14:12.807' AS DateTime), 1, 2, CAST(3000.00 AS Decimal(18, 2)),
+CAST(6000.00 AS Decimal(18, 2)), CAST(3000.00 AS Decimal(18, 2)), 1)
+GO
+SET IDENTITY_INSERT [dbo].[ClientTransferRegisters] OFF
+GOSET IDENTITY_INSERT [dbo].[Countries] ON
+GO
+INSERT [dbo].[Countries] ([ID], [Name], [CurrencyID]) VALUES (1, N'United
+States of America', 1)
+GO
+INSERT [dbo].[Countries] ([ID], [Name], [CurrencyID]) VALUES (2, N'China', 2)
+GO
+INSERT [dbo].[Countries] ([ID], [Name], [CurrencyID]) VALUES (3, N'Iraq', 3)
+GO
+INSERT [dbo].[Countries] ([ID], [Name], [CurrencyID]) VALUES (6, N'Syria', 6)
+GO
+SET IDENTITY_INSERT [dbo].[Countries] OFF
+GO
+SET IDENTITY_INSERT [dbo].[Currencies] ON
+GO
+INSERT [dbo].[Currencies] ([ID], [Name], [Code], [Rate]) VALUES (1, N'US
+Dollar', N'USD', 1)
+GO
+INSERT [dbo].[Currencies] ([ID], [Name], [Code], [Rate]) VALUES (2, N'Chinese
+Renminbi', N'CNY', 6.94)
+GO
+INSERT [dbo].[Currencies] ([ID], [Name], [Code], [Rate]) VALUES (3, N'Iraqi
+Dinar', N'IQD', 1450)
+GO
+INSERT [dbo].[Currencies] ([ID], [Name], [Code], [Rate]) VALUES (6, N'Syria',
+N'SYR', 1450)
+GO
+SET IDENTITY_INSERT [dbo].[Currencies] OFF
+GO
+SET IDENTITY_INSERT [dbo].[Persons] ON
+GO
+INSERT [dbo].[Persons] ([ID], [FirstName], [LastName], [Phone], [Email])
+VALUES (1, N'Mustafa', N'Ibrahim', N'783165261', N'Mustafa.Ibr@gmail.com')
+GO
+INSERT [dbo].[Persons] ([ID], [FirstName], [LastName], [Phone], [Email])
+VALUES (2, N'Ahmed', N'Ali', N'07502731723', N'AhmedAli@gmail.com')
+GO
+INSERT [dbo].[Persons] ([ID], [FirstName], [LastName], [Phone], [Email])VALUES (12, N'Lolo', N'Mohammed', N'0781264384',
+N'LoloMohammed@gmail.com')
+GO
+INSERT [dbo].[Persons] ([ID], [FirstName], [LastName], [Phone], [Email])
+VALUES (13, N'Fadi', N'Saqr', N'0781264384', N'FadiSaqr@gmail.com')
+GO
+INSERT [dbo].[Persons] ([ID], [FirstName], [LastName], [Phone], [Email])
+VALUES (14, N'Sarah', N'Khaled', N'07707352832', N'SarahAhmed@gmail.com')
+GO
+INSERT [dbo].[Persons] ([ID], [FirstName], [LastName], [Phone], [Email])
+VALUES (15, N'Shadi', N'Khaled', N'07707352832', N'ShadiAhmed@gmail.com')
+GO
+INSERT [dbo].[Persons] ([ID], [FirstName], [LastName], [Phone], [Email])
+VALUES (18, N'Fadi', N'Saqr', N'0781264384', N'FadiSaqr@gmail.com')
+GO
+INSERT [dbo].[Persons] ([ID], [FirstName], [LastName], [Phone], [Email])
+VALUES (19, N'Fadi', N'Saqr', N'0781264384', N'FadiSaqr@gmail.com')
+GO
+INSERT [dbo].[Persons] ([ID], [FirstName], [LastName], [Phone], [Email])
+VALUES (20, N'Fadi', N'Saqr', N'0781264384', N'FadiSaqr@gmail.com')
+GO
+INSERT [dbo].[Persons] ([ID], [FirstName], [LastName], [Phone], [Email])
+VALUES (21, N'Fadi', N'Saqr', N'0781264384', N'FadiSaqr@gmail.com')
+GO
+INSERT [dbo].[Persons] ([ID], [FirstName], [LastName], [Phone], [Email])
+VALUES (22, N'Ahmed', N'MM', N'134343211', N'asdada@gmail.com')
+GO
+INSERT [dbo].[Persons] ([ID], [FirstName], [LastName], [Phone], [Email])
+VALUES (23, N'sdhdsgdgs', N'sddjdshh', N'123322832',
+N'sajhagasg@gmail.com')
+GO
+INSERT [dbo].[Persons] ([ID], [FirstName], [LastName], [Phone], [Email])
+VALUES (24, N'sjhahasj', N'sdjaka', N'18326236', N'sdhdsaj@gmail.com')
+GO
+INSERT [dbo].[Persons] ([ID], [FirstName], [LastName], [Phone], [Email])
+VALUES (25, N'dkshhaaaa', N'sdlkjasj', N'18327327', N'asshaahs@gmail.com')
+GO
+INSERT [dbo].[Persons] ([ID], [FirstName], [LastName], [Phone], [Email])VALUES (26, N'Khaled', N'Ahmed', N'750362642', N'KhaledAhmed@gmail.com')
+GO
+INSERT [dbo].[Persons] ([ID], [FirstName], [LastName], [Phone], [Email])
+VALUES (27, N'shahsfs', N'sahdshh', N'17732732', N'hdshaj@gmail.com')
+GO
+INSERT [dbo].[Persons] ([ID], [FirstName], [LastName], [Phone], [Email])
+VALUES (28, N'Khalel', N'Saed', N'07502378', N'KhalelSaed@gmail.com')
+GO
+INSERT [dbo].[Persons] ([ID], [FirstName], [LastName], [Phone], [Email])
+VALUES (29, N'ashhsaj', N'ksajsaak', N'32938383', N'jhjasakask@gmail.com')
+GO
+SET IDENTITY_INSERT [dbo].[Persons] OFF
+GO
+SET IDENTITY_INSERT [dbo].[UserLoginRegisters] ON
+GO
+INSERT [dbo].[UserLoginRegisters] ([ID], [DateTime], [UserID]) VALUES (1,
+CAST(N'2024-09-01T11:11:04.587' AS DateTime), 1)
+GO
+INSERT [dbo].[UserLoginRegisters] ([ID], [DateTime], [UserID]) VALUES (2,
+CAST(N'2024-09-01T11:11:04.587' AS DateTime), 2)
+GO
+INSERT [dbo].[UserLoginRegisters] ([ID], [DateTime], [UserID]) VALUES (3,
+CAST(N'2024-09-01T11:31:07.440' AS DateTime), 1)
+GO
+INSERT [dbo].[UserLoginRegisters] ([ID], [DateTime], [UserID]) VALUES (4,
+CAST(N'2024-09-01T11:31:16.050' AS DateTime), 1)
+GO
+INSERT [dbo].[UserLoginRegisters] ([ID], [DateTime], [UserID]) VALUES (5,
+CAST(N'2024-09-01T11:31:19.530' AS DateTime), 1)
+GO
+INSERT [dbo].[UserLoginRegisters] ([ID], [DateTime], [UserID]) VALUES (6,
+CAST(N'2024-09-01T11:31:32.723' AS DateTime), 3)
+GO
+INSERT [dbo].[UserLoginRegisters] ([ID], [DateTime], [UserID]) VALUES (8,
+CAST(N'2024-09-01T11:32:08.490' AS DateTime), 1)
+GO
+SET IDENTITY_INSERT [dbo].[UserLoginRegisters] OFF
+GOSET IDENTITY_INSERT [dbo].[Users] ON
+GO
+INSERT [dbo].[Users] ([ID], [UserName], [PassWord], [Permissions], [PersonID])
+VALUES (1, N'Admin', N'1234', -1, 1)
+GO
+INSERT [dbo].[Users] ([ID], [UserName], [PassWord], [Permissions], [PersonID])
+VALUES (2, N'User1', N'1234', 3, 2)
+GO
+INSERT [dbo].[Users] ([ID], [UserName], [PassWord], [Permissions], [PersonID])
+VALUES (3, N'User2', N'1234', 7, 18)
+GO
+INSERT [dbo].[Users] ([ID], [UserName], [PassWord], [Permissions], [PersonID])
+VALUES (7, N'User3', N'1234', -1, 15)
+GO
+INSERT [dbo].[Users] ([ID], [UserName], [PassWord], [Permissions], [PersonID])
+VALUES (8, N'User4', N'1234', 3, 28)
+GO
+SET IDENTITY_INSERT [dbo].[Users] OFF
+GO
+ALTER TABLE [dbo].[Clients] WITH CHECK ADD CONSTRAINT
+[FK_Clients_Persons] FOREIGN KEY([PersonID])
+REFERENCES [dbo].[Persons] ([ID])
+GO
+ALTER TABLE [dbo].[Clients] CHECK CONSTRAINT [FK_Clients_Persons]
+GO
+ALTER TABLE [dbo].[ClientTransferRegisters] WITH CHECK ADD
+CONSTRAINT [FK_ClientTransferRegisters_Clients2] FOREIGN
+KEY([sClientID])
+REFERENCES [dbo].[Clients] ([ID])
+GO
+ALTER TABLE [dbo].[ClientTransferRegisters] CHECK CONSTRAINT
+[FK_ClientTransferRegisters_Clients2]
+GO
+ALTER TABLE [dbo].[ClientTransferRegisters] WITH CHECK ADD
+CONSTRAINT [FK_ClientTransferRegisters_Clients3] FOREIGN
+KEY([dClientID])
+REFERENCES [dbo].[Clients] ([ID])
+GOALTER TABLE [dbo].[ClientTransferRegisters] CHECK CONSTRAINT [FK_ClientTransferRegisters_Clients3] GO
+ALTER TABLE [dbo].[ClientTransferRegisters] WITH CHECK ADD CONSTRAINT [FK_ClientTransferRegisters_Users] FOREIGN KEY([ByUserID]) REFERENCES [dbo].[Users] ([ID]) GO
+ALTER TABLE [dbo].[ClientTransferRegisters] CHECK CONSTRAINT [FK_ClientTransferRegisters_Users] GO
+ALTER TABLE [dbo].[Countries] WITH CHECK ADD CONSTRAINT [FK_Countries_Currencies] FOREIGN KEY([CurrencyID]) REFERENCES [dbo].[Currencies] ([ID]) GO
+ALTER TABLE [dbo].[Countries] CHECK CONSTRAINT [FK_Countries_Currencies] GO
+ALTER TABLE [dbo].[UserLoginRegisters] WITH CHECK ADD CONSTRAINT [FK_UserLoginRegisters_Users] FOREIGN KEY([UserID]) REFERENCES [dbo].[Users] ([ID]) GO
+ALTER TABLE [dbo].[UserLoginRegisters] CHECK CONSTRAINT [FK_UserLoginRegisters_Users] GO
+ALTER TABLE [dbo].[Users] WITH CHECK ADD CONSTRAINT [FK_Users_Persons] FOREIGN KEY([PersonID]) REFERENCES [dbo].[Persons] ([ID]) GO
+ALTER TABLE [dbo].[Users] CHECK CONSTRAINT [FK_Users_Persons] GO USE [master] GO
+ALTER DATABASE [BankSystemDB] SET READ_WRITE GO
