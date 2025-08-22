@@ -1,5 +1,3 @@
-"# Project-16 _ BankSystem-v0.5" 
-
 # 🏦 Project-16: Bank System (v0.5)
 
 **Author:** Mustafa A. Ibrahim
